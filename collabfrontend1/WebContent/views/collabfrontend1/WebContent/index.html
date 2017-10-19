@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="css/sample.css" rel="stylesheet"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  .con{
+     margin-top:70px;
+  
+  }
+  </style>
+</head>
+<body ng-app="app">
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Web</a>
+    </div>
+    <ul class="nav navbar-nav">
+			<li><a href="#!Home">Home</a></li>
+			<li><a href="#!About">About</a></li>
+			
+<li><a href="#!Login" ng-hide="currentUser.online">Login</a></li>
+<li><a href="#!SignUp" ng-hide="currentUser.online">SignUp</a></li>
+<li><a href="#!editprofile" ng-show="currentUser.online">EditProfile</a></li>
+<li class="dropdown">
+	<a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.online">Blog<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+			 <li><a href="#!addblogpost" >Add BlogPost</a></li>
+			 <li><a href="#!/getblogs" >view BlogPost</a></li>
+			 </ul> </li>
+			 
+<li><a href="#!Forum">Forum</a></li>
+			
+<li class="dropdown">
+	<a href="" class="dropdown-toggle" data-toggle="dropdown" ng-show="currentUser.username">Job<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+			 <li><a href="#!addjob" ng-show="currentUser.role=='ADMIN'" >Add Job</a></li>
+			 <li><a href="#!/getalljobs" >view Jobs</a></li>
+			 </ul> </li>
+<li><a href="#" ng-show="currentUser.online">Welcome {{currentUser.firstname}} {{currentUser.lastname}}</a></li>
+<li><a href="#!uploadprofilepic" ng-show="currentUser.online"><img src="http://localhost:8086/collabmiddleend/getimage/{{currentUser.username}}" class="img-circle" height="30px" width="30px"alt="Upload Profile Pic" ></a></li>
+<li><a href="" ng-click="logout()" ng-show="currentUser.online">Logout</a></li>
+
+
+
+		</ul>
+	
+	</div>
+</nav>
+
+<div class="con" ng-view ></div>
+<script src="js/angular.js"></script>
+<script src="js/angular-route.js"></script>
+<script type="text/javascript" src="js/angular-cookies.js"></script>
+<script src="js/app.js"></script>
+<script type="text/javascript" src="controllers/usercontroller.js"></script>
+<script type="text/javascript" src="services/userservice.js"></script>
+<script type="text/javascript" src="services/blogpostservice.js"></script>
+<script type="text/javascript" src="services/jobservice.js"></script>
+<script type="text/javascript" src="controllers/blogpostcontroller.js"></script>
+<script type="text/javascript" src="controllers/blogpostdetailcontroller.js"></script>
+<script type="text/javascript" src="controllers/jobcontroller.js"></script>
+
+</body>
+</html>

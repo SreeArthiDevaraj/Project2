@@ -1,0 +1,85 @@
+<p>Search:</p><input type="text" ng-model="searchTxt">
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+<table class="table table-striped">
+<thead>
+<tr>
+<th>JobTitle</th>
+<th>PostedOn</th>
+<th>SkillsRequired</th>
+<th>Location</th>
+</tr>
+</thead>
+<tbody>
+<tr ng-repeat="job in jobs | filter:searchTxt">
+<td><a href="" ng-click="getJobDetails(job.id)">{{job.jobTitle}}</a></td>
+<td>{{job.postedOn| date:'medium'}}</td>
+<td>{{job.skillsRequired}}</td>
+<td>{{job.location}}</td>
+</tr>
+</tbody>
+</table>
+<style>
+/* unvisited link */
+a:link {
+    color: red;
+}
+
+/* visited link */
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+a:serif {
+    font-family: "Times New Roman", Times, serif;
+}
+  .a{
+  margin: auto;
+    width: 40%;
+    border: 3px solid #73AD21;
+    padding: 10px;
+  
+  }
+</style>
+<div ng-show="showJobDetails" class="a">
+ 
+<h1 style="color:blue;">JobDetails</h1>
+
+<pre style="color:red;">
+JobTitle:{{job.jobTitle}}
+JobDescription:{{job.jobDescription}}
+SkillsRequired:{{job.skillsRequired}}
+Salary:{{job.salary}}
+Location:{{job.location}}
+CompanyName:{{job.companyname}}
+PostedON:{{job.postedOn|date:'medium'}}
+</pre>
+  <button type="button" class="btn btn-info">Info</button>
+
+</div> 
+
